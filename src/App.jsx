@@ -1,10 +1,31 @@
-//import { useState } from 'react'
-import NavBarEx from './components/NavBar'
-function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Home from "./pages/Inicio";
+import Products from "./pages/Productos";
+import ProductDetail from "./pages/ProductoDetalle";
+import Cart from "./pages/Carrito";
+import Checkout from "./pages/CheckOut";
+
+function App() {
   return (
-    <NavBarEx></NavBarEx>
-  )
+    <BrowserRouter>
+
+      <Routes>
+
+        <Route path="/" element={<Home />} />
+
+        <Route path="/productos" element={<Products />} />
+
+        <Route path="/producto/:id" element={<ProductDetail />} />
+
+        <Route path="/carrito" element={<Cart />} />
+
+        <Route path="/checkout" element={<Checkout />} />
+
+      </Routes>
+
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
