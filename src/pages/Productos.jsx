@@ -57,6 +57,9 @@ function Productos({ agregarAlCarrito }) {
                         <option value="Google">
                             Google
                         </option>
+                        <option value="Nothing">
+                            Nothing
+                        </option>
                     </Form.Select>
                 </Col>
 

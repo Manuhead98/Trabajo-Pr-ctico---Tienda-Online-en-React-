@@ -42,6 +42,14 @@ function ProductoDetalle({ agregarAlCarrito }) {
                         {producto.descripcion}
                     </Card.Text>
 
+                    <h5>Características</h5>
+
+                        <ul>
+                            {producto.caracteristicas.map((c, index) => (
+                                <li key={index}>{c}</li>
+                            ))}
+                        </ul>
+
                     <Button
                         variant="success"
                         onClick={() => agregarAlCarrito(producto)}

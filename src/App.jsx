@@ -58,7 +58,10 @@ function App() {
             eliminarDelCarrito={eliminarDelCarrito}
             aumentarCantidad={aumentarCantidad}
             disminuirCantidad={disminuirCantidad} />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={<Checkout carrito={carrito} />}
+        />
       </Routes>
       <Footer />
     </BrowserRouter>

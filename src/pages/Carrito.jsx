@@ -1,4 +1,5 @@
 import { Container, Card, Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 function Carrito({
     carrito,
@@ -65,11 +66,12 @@ function Carrito({
             )}
             <h3 className="mt-4">Total: ${total.toLocaleString()}</h3>
             <Button
-            variant="primary"
-            href="/checkout"
-            disabled={carrito.length === 0}
+                as={Link}
+                to="/checkout"
+                variant="primary"
+                disabled={carrito.length === 0}
             >
-               Finalizar Compra
+                Finalizar Compra
             </Button>
         </Container>
     );
