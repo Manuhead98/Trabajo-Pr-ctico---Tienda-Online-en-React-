@@ -1,0 +1,12 @@
+.carousel-img {
+    height: 530px;
+    object-fit: cover;
+    object-Position: center;
+
+}
+
+@media (max-width: 768px) {
+    .carousel-img {
+        height: 250px;
+    }
+}

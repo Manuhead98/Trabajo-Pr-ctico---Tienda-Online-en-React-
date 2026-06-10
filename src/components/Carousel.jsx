@@ -1,4 +1,5 @@
 import { Carousel } from 'react-bootstrap';
+import './Carousel.css';
 
 function HeroCarousel() {
     return (
@@ -6,7 +7,7 @@ function HeroCarousel() {
 
             <Carousel.Item>
                 <img
-                    className="d-block w-100"
+                    className="d-block w-100 carousel-img"
                     src="./public/img/banner1.jpg"
                     alt="Samsung"
                 />
@@ -17,7 +18,7 @@ function HeroCarousel() {
 
             <Carousel.Item>
                 <img
-                    className="d-block w-100"
+                    className="d-block w-100 carousel-img "
                     src="./public/img/banner2.jpg"
                     alt="iPhone"
                 />
