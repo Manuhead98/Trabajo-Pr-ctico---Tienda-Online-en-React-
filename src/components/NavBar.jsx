@@ -6,27 +6,21 @@ function NavBar() {
         <Navbar bg="dark" variant="dark" expand="lg">
 
             <Container>
-
                 <Navbar.Brand
                     as={Link}
                     to="/"
                 >
                     CellStore
                 </Navbar.Brand>
-
                 <Navbar.Toggle />
-
                 <Navbar.Collapse>
-
                     <Nav className="ms-auto">
-
                         <Nav.Link
                             as={Link}
                             to="/"
                         >
                             Inicio
                         </Nav.Link>
-
                         <Nav.Link
                             as={Link}
                             to="/productos"

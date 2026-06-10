@@ -1,16 +1,107 @@
-# React + Vite
+# 📱 CellStore
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tienda online de celulares desarrollada como Trabajo Práctico para la materia de Desarrollo Web.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📋 Descripción
 
-## React Compiler
+CellStore es una aplicación web que simula una tienda online de celulares. Los usuarios pueden explorar el catálogo de productos, ver el detalle de cada equipo, filtrar y buscar por distintos criterios, armar su carrito de compras y completar una compra simulada mediante un formulario.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologías utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React](https://react.dev/) — Biblioteca principal para la construcción de la UI
+- [JavaScript (ES6+)](https://developer.mozilla.org/es/docs/Web/JavaScript) — Lenguaje de programación
+- [React Router DOM](https://reactrouter.com/) — Navegación y rutas dinámicas
+- [React Bootstrap](https://react-bootstrap.github.io/) — Componentes y estilos responsivos
+- [Bootstrap](https://getbootstrap.com/) — Framework CSS base
+- [Vite](https://vitejs.dev/) — Herramienta de desarrollo y bundler
+
+---
+
+## 📁 Estructura del proyecto
+
+```
+src/
+├── components/
+│   ├── Navbar.jsx
+│   ├── Footer.jsx
+│   ├── ProductoCard.jsx
+│   ├── CarritoItem.jsx
+│   └── FormularioCompra.jsx
+├── pages/
+│   ├── Inicio.jsx
+│   ├── Productos.jsx
+│   ├── DetalleProducto.jsx
+│   ├── Carrito.jsx
+│   └── Contacto.jsx
+├── data/
+│   └── productos.js
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+## ⚙️ Instalación y ejecución
+
+Seguí estos pasos para correr el proyecto en tu máquina:
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/tu-usuario/cellstore.git
+cd cellstore
+```
+
+### 2. Instalar las dependencias
+
+```bash
+npm install
+```
+
+### 3. Iniciar el servidor de desarrollo
+
+```bash
+npm run dev
+```
+
+### 4. Abrir en el navegador
+
+```
+http://localhost:5173
+```
+
+---
+
+## ✅ Funcionalidades implementadas
+
+- Página de inicio con identidad visual de la tienda
+- Catálogo con más de 12 productos
+- Filtrado por categoría, búsqueda por nombre y ordenamiento por precio
+- Vista de detalle de cada producto con ruta dinámica (`/producto/:id`)
+- Carrito de compras: agregar, eliminar, modificar cantidades y ver total
+- Formulario de compra controlado con validaciones
+- Navegación completa con React Router DOM
+- Diseño responsive adaptado a celular, tablet y escritorio
+
+---
+
+## 👥 Integrantes del grupo
+
+| Nombre y Apellido | 
+|-------------------|
+| Solis Diaz Juan Manuel |
+| Carolina Victoria Gonzalez Pisarello |
+| Agustina Fontivero |
+| Ramiro Casablancas |
+
+---
+
+## 📬 Entrega
+
+Trabajo Práctico — Tienda Online en React  
+Docente: Lucas Figarola  
+Institución: UNAHUR
