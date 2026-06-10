@@ -1,72 +1,103 @@
-import { useParams, Link } from "react-router-dom";
-import productos from "../data/productos";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import { Container, Row, Col, Button, Badge } from 'react-bootstrap';
+import { useParams, Link } from 'react-router-dom';
+
+import productos from '../data/productos';
 
 function ProductoDetalle({ agregarAlCarrito }) {
-    const { id } = useParams();
 
-    const producto = productos.find(
-        (p) => p.id === parseInt(id)
-    );
+```
+const { id } = useParams();
 
-    if (!producto) {
-        return <h2>Producto no encontrado</h2>;
-    }
+const producto = productos.find(
+    p => p.id === Number(id)
+);
 
+if (!producto) {
     return (
-        <div className="container mt-4">
-            <Card>
-                <Card.Img
-                    variant="top"
+        <Container className="mt-4">
+            <h2>Producto no encontrado</h2>
+        </Container>
+    );
+}
+
+return (
+    <Container className="mt-5">
+
+        <Row>
+            <Col md={6}>
+                <img
                     src={producto.imagen}
-                    style={{ maxHeight: "400px", objectFit: "contain" }}
+                    alt={producto.nombre}
+                    className="img-fluid rounded shadow"
                 />
+            </Col>
 
-                <Card.Body>
-                    <Card.Title>{producto.nombre}</Card.Title>
+            <Col md={6}>
+                <h1>{producto.nombre}</h1>
 
-                    <Card.Text>
-                        <strong>Categoría:</strong> {producto.categoria}
-                    </Card.Text>
+                <Badge bg="secondary">
+                    {producto.categoria}
+                </Badge>
 
-                    <Card.Text>
-                        <strong>Precio:</strong> ${producto.precio}
-                    </Card.Text>
+                <h3 className="mt-3">
+                    ${producto.precio.toLocaleString()}
+                </h3>
 
-                    <Card.Text>
-                        <strong>Stock:</strong> {producto.stock}
-                    </Card.Text>
+                <p className="mt-3">
+                    {producto.descripcion}
+                </p>
 
-                    <Card.Text>
-                        {producto.descripcion}
-                    </Card.Text>
+                <p>
+                    <strong>Stock:</strong>{" "}
+                    {producto.stock > 0 ? (
+                        <Badge bg="success">
+                            Disponible ({producto.stock})
+                        </Badge>
+                    ) : (
+                        <Badge bg="danger">
+                            Sin stock
+                        </Badge>
+                    )}
+                </p>
 
-                    <h5>Características</h5>
+                <h5>Características</h5>
 
-                        <ul>
-                            {producto.caracteristicas.map((c, index) => (
-                                <li key={index}>{c}</li>
-                            ))}
-                        </ul>
+                <ul>
+                    {producto.caracteristicas.map((caracteristica, index) => (
+                        <li key={index}>
+                            {caracteristica}
+                        </li>
+                    ))}
+                </ul>
+
+                <div className="d-flex gap-2">
+
+                    <Button
+                        as={Link}
+                        to="/productos"
+                        variant="secondary"
+                    >
+                        Volver
+                    </Button>
 
                     <Button
                         variant="success"
-                        onClick={() => agregarAlCarrito(producto)}
                         disabled={producto.stock === 0}
+                        onClick={() => agregarAlCarrito(producto)}
                     >
                         Agregar al carrito
                     </Button>
 
-                    <Link to="/productos">
-                        <Button variant="secondary" className="ms-2">
-                            Volver
-                        </Button>
-                    </Link>
-                </Card.Body>
-            </Card>
-        </div>
-    );
+                </div>
+
+            </Col>
+
+        </Row>
+
+    </Container>
+);
+```
+
 }
 
 export default ProductoDetalle;

@@ -4,13 +4,13 @@ Tienda online de celulares desarrollada como Trabajo Práctico para la materia d
 
 ---
 
-## 📋 Descripción
+## Descripción
 
 CellStore es una aplicación web que simula una tienda online de celulares. Los usuarios pueden explorar el catálogo de productos, ver el detalle de cada equipo, filtrar y buscar por distintos criterios, armar su carrito de compras y completar una compra simulada mediante un formulario.
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - [React](https://react.dev/) — Biblioteca principal para la construcción de la UI
 - [JavaScript (ES6+)](https://developer.mozilla.org/es/docs/Web/JavaScript) — Lenguaje de programación
@@ -21,22 +21,21 @@ CellStore es una aplicación web que simula una tienda online de celulares. Los 
 
 ---
 
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 
 ```
 src/
 ├── components/
 │   ├── Navbar.jsx
 │   ├── Footer.jsx
-│   ├── ProductoCard.jsx
-│   ├── CarritoItem.jsx
-│   └── FormularioCompra.jsx
+│   ├── ProductCard.jsx
+    |__ Carousel.jsx 
 ├── pages/
 │   ├── Inicio.jsx
 │   ├── Productos.jsx
-│   ├── DetalleProducto.jsx
+│   ├── ProductoDetalle.jsx
 │   ├── Carrito.jsx
-│   └── Contacto.jsx
+│   └── CheckOut.jsx
 ├── data/
 │   └── productos.js
 ├── App.jsx
@@ -45,15 +44,15 @@ src/
 
 ---
 
-## ⚙️ Instalación y ejecución
+## Instalación y ejecución
 
 Seguí estos pasos para correr el proyecto en tu máquina:
 
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/cellstore.git
-cd cellstore
+git clone https://github.com/Manuhead98/Trabajo-Pr-ctico---Tienda-Online-en-React-
+cd "tienda online"
 ```
 
 ### 2. Instalar las dependencias
@@ -76,7 +75,7 @@ http://localhost:5173
 
 ---
 
-## ✅ Funcionalidades implementadas
+## Funcionalidades implementadas
 
 - Página de inicio con identidad visual de la tienda
 - Catálogo con más de 12 productos
@@ -89,7 +88,7 @@ http://localhost:5173
 
 ---
 
-## 👥 Integrantes del grupo
+## Integrantes del grupo
 
 | Nombre y Apellido | 
 |-------------------|
@@ -100,7 +99,7 @@ http://localhost:5173
 
 ---
 
-## 📬 Entrega
+## Entrega
 
 Trabajo Práctico — Tienda Online en React  
 Docente: Lucas Figarola  
