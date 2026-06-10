@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/NavBar";
@@ -10,7 +10,13 @@ import Checkout from "./pages/CheckOut";
 import Footer from "./components/Footer";
 
 function App() {
-  const [carrito, setCarrito] = useState([]);
+  const [carrito, setCarrito] = useState(() => {
+  const carritoGuardado = localStorage.getItem("carrito");
+  return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+  });
+  useEffect(() => {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  }, [carrito]);
   const [darkMode, setDarkMode] = useState(false);
 
   const agregarAlCarrito = (producto) => {
