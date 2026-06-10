@@ -8,6 +8,7 @@ import ProductDetail from "./pages/ProductoDetalle";
 import Cart from "./pages/Carrito";
 import Checkout from "./pages/CheckOut";
 import Footer from "./components/Footer";
+import Nosotros from "./pages/Nosotros";
 
 function App() {
   const [carrito, setCarrito] = useState(() => {
@@ -90,7 +91,10 @@ function App() {
             path="/producto/:id"
             element={<ProductDetail agregarAlCarrito={agregarAlCarrito} />}
           />
-
+          <Route
+            path="/nosotros"
+            element={<Nosotros />}
+          />
           <Route
             path="/carrito"
             element={

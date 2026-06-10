@@ -27,7 +27,12 @@ function NavBar() {
                         >
                             Productos
                         </Nav.Link>
-
+                        <Nav.Link
+                        as={Link}
+                        to="/nosotros"
+                        >
+                        Nosotros
+                        </Nav.Link>
                         <Nav.Link
                             as={Link}
                             to="/carrito"
