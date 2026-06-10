@@ -90,6 +90,11 @@ function App() {
           path="/checkout"
           element={<Checkout carrito={carrito} />}
         />
+          element={<Cart carrito={carrito}
+            eliminarDelCarrito={eliminarDelCarrito}
+            aumentarCantidad={aumentarCantidad}
+            disminuirCantidad={disminuirCantidad} />} />
+        <Route path="/checkout" element={<Checkout carrito={carrito} setCarrito={setCarrito} />} />
       </Routes>
 
       <Footer />

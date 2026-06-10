@@ -1,108 +1,203 @@
-import { useState } from "react";
-import { Container, Form, Button, Alert } from "react-bootstrap";
+import { useState } from 'react';
+import { Container, Form, Button, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-function CheckOut({ carrito }) {
-    console.log("CHECKOUT", carrito);
-    const [nombre, setNombre] = useState("");
-    const [email, setEmail] = useState("");
-    const [telefono, setTelefono] = useState("");
-    const [direccion, setDireccion] = useState("");
-    const [entrega, setEntrega] = useState("Retiro en local");
-    const [mensaje, setMensaje] = useState("");
-    const [compraRealizada, setCompraRealizada] = useState(false);
+function CheckOut({ carrito, setCarrito }) {
+    const navigate = useNavigate();
+
+    const [form, setForm] = useState({
+        nombre: '',
+        apellido: '',
+        email: '',
+        telefono: '',
+        localidad: '',
+        entrega: '',
+        mensaje: ''
+    });
+
+    const [errores, setErrores] = useState({});
+    const [enviado, setEnviado] = useState(false);
+
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const validar = () => {
+        const nuevosErrores = {};
+
+        if (!form.nombre.trim())
+            nuevosErrores.nombre = 'El nombre es obligatorio.';
+
+        if (!form.apellido.trim())
+            nuevosErrores.apellido = 'El apellido es obligatorio.';
+
+        if (!form.email.trim())
+            nuevosErrores.email = 'El email es obligatorio.';
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+            nuevosErrores.email = 'El email no tiene un formato válido.';
+
+        if (!form.telefono.trim())
+            nuevosErrores.telefono = 'El teléfono es obligatorio.';
+
+        if (!form.localidad.trim())
+            nuevosErrores.localidad = 'La localidad es obligatoria.';
+
+        if (!form.entrega)
+            nuevosErrores.entrega = 'Seleccioná un método de entrega.';
+
+        return nuevosErrores;
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!nombre || !email || !telefono || !direccion) {
-            alert("Complete todos los campos obligatorios");
+        const erroresEncontrados = validar();
+
+        if (Object.keys(erroresEncontrados).length > 0) {
+            setErrores(erroresEncontrados);
             return;
         }
 
-        if (!email.includes("@")) {
-            alert("Ingrese un email válido");
-            return;
-        }
+        setEnviado(true);
+        setCarrito([]);
 
-        if (carrito.length === 0) {
-            alert("El carrito está vacío");
-            return;
-        }
-
-        setCompraRealizada(true);
+        setTimeout(() => navigate('/'), 3000);
     };
 
-    return (
-        <Container className="mt-4">
-            <h1>Finalizar Compra</h1>
-
-            {compraRealizada && (
+    if (enviado) {
+        return (
+            <Container className="mt-5 text-center">
                 <Alert variant="success">
-                    ¡Compra realizada con éxito!
+                    <h4>¡Pedido confirmado!</h4>
+                    <p>Gracias {form.nombre}, tu pedido fue registrado correctamente.</p>
+                    <p className="text-muted">
+                        Serás redirigido al inicio en unos segundos...
+                    </p>
+                </Alert>
+            </Container>
+        );
+    }
+
+    return (
+        <Container className="mt-4 mb-5" style={{ maxWidth: '550px' }}>
+            <h2 className="mb-4">Finalizar Compra</h2>
+
+            {carrito.length === 0 && (
+                <Alert variant="warning">
+                    Tu carrito está vacío. Agregá productos antes de continuar.
                 </Alert>
             )}
 
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} noValidate>
+
                 <Form.Group className="mb-3">
-                    <Form.Label>Nombre y Apellido</Form.Label>
+                    <Form.Label>Nombre *</Form.Label>
                     <Form.Control
                         type="text"
-                        value={nombre}
-                        onChange={(e) => setNombre(e.target.value)}
+                        name="nombre"
+                        value={form.nombre}
+                        onChange={handleChange}
+                        isInvalid={!!errores.nombre}
                     />
+                    <Form.Control.Feedback type="invalid">
+                        {errores.nombre}
+                    </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label>Apellido *</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="apellido"
+                        value={form.apellido}
+                        onChange={handleChange}
+                        isInvalid={!!errores.apellido}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        {errores.apellido}
+                    </Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label>Email *</Form.Label>
                     <Form.Control
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        name="email"
+                        value={form.email}
+                        onChange={handleChange}
+                        isInvalid={!!errores.email}
                     />
+                    <Form.Control.Feedback type="invalid">
+                        {errores.email}
+                    </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Label>Teléfono</Form.Label>
+                    <Form.Label>Teléfono *</Form.Label>
+                    <Form.Control
+                        type="tel"
+                        name="telefono"
+                        value={form.telefono}
+                        onChange={handleChange}
+                        isInvalid={!!errores.telefono}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        {errores.telefono}
+                    </Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label>Localidad *</Form.Label>
                     <Form.Control
                         type="text"
-                        value={telefono}
-                        onChange={(e) => setTelefono(e.target.value)}
+                        name="localidad"
+                        value={form.localidad}
+                        onChange={handleChange}
+                        isInvalid={!!errores.localidad}
                     />
+                    <Form.Control.Feedback type="invalid">
+                        {errores.localidad}
+                    </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Label>Dirección</Form.Label>
-                    <Form.Control
-                        type="text"
-                        value={direccion}
-                        onChange={(e) => setDireccion(e.target.value)}
-                    />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Método de entrega</Form.Label>
+                    <Form.Label>Método de entrega *</Form.Label>
                     <Form.Select
-                        value={entrega}
-                        onChange={(e) => setEntrega(e.target.value)}
+                        name="entrega"
+                        value={form.entrega}
+                        onChange={handleChange}
+                        isInvalid={!!errores.entrega}
                     >
-                        <option>Retiro en local</option>
-                        <option>Envío a domicilio</option>
+                        <option value="">Seleccioná una opción</option>
+                        <option value="domicilio">Envío a domicilio</option>
+                        <option value="retiro">Retiro en local</option>
                     </Form.Select>
+                    <Form.Control.Feedback type="invalid">
+                        {errores.entrega}
+                    </Form.Control.Feedback>
                 </Form.Group>
 
-                <Form.Group className="mb-3">
+                <Form.Group className="mb-4">
                     <Form.Label>Aclaraciones</Form.Label>
                     <Form.Control
                         as="textarea"
                         rows={3}
-                        value={mensaje}
-                        onChange={(e) => setMensaje(e.target.value)}
+                        name="mensaje"
+                        value={form.mensaje}
+                        onChange={handleChange}
                     />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    Confirmar Compra
+                <Button
+                    type="submit"
+                    variant="success"
+                    size="lg"
+                    className="w-100"
+                    disabled={carrito.length === 0}
+                >
+                    Confirmar pedido
                 </Button>
+
             </Form>
         </Container>
     );

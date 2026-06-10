@@ -1,6 +1,6 @@
 # 📱 CellStore
 
-Tienda online de celulares desarrollada como Trabajo Práctico para la materia de Desarrollo Web.
+Tienda online de celulares desarrollada como Trabajo Práctico para la materia de Construcción de Interfaces de Usuario.
 
 ---
 
