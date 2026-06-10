@@ -1,6 +1,11 @@
-import { Container, Card } from 'react-bootstrap';
+import { Container, Card, Button } from 'react-bootstrap';
 
-function Carrito({ carrito }) {
+function Carrito({
+    carrito,
+    eliminarDelCarrito,
+    aumentarCantidad,
+    disminuirCantidad
+}) {
     //calculo el total del carrito sumando el precio por la cantidad de cada producto
     const total = carrito.reduce((acum, item) => acum + item.precio * item.cantidad, 0);
 
@@ -25,6 +30,32 @@ function Carrito({ carrito }) {
                         <Card.Text>
                             Cantidad: {item.cantidad}
                         </Card.Text>
+                        <div className="mb-3">
+                        <Button
+                            variant="success"
+                            size="sm"
+                            onClick={() => aumentarCantidad(item.id)}
+                        >
+                            +
+                        </Button>
+
+                        <Button
+                            variant="warning"
+                            size="sm"
+                            className="mx-2"
+                            onClick={() => disminuirCantidad(item.id)}
+                        >
+                            -
+                        </Button>
+
+                        <Button
+                            variant="danger"
+                            size="sm"
+                            onClick={() => eliminarDelCarrito(item.id)}
+                        >
+                            Eliminar
+                        </Button>
+                    </div>
                         <Card.Text>
                             Subtotal: $
                             {(item.precio * item.cantidad).toLocaleString()}
@@ -33,6 +64,13 @@ function Carrito({ carrito }) {
                 </Card>))
             )}
             <h3 className="mt-4">Total: ${total.toLocaleString()}</h3>
+            <Button
+            variant="primary"
+            href="/checkout"
+            disabled={carrito.length === 0}
+            >
+               Finalizar Compra
+            </Button>
         </Container>
     );
 }
