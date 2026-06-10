@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 
 function App() {
   const [carrito, setCarrito] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
 
   const agregarAlCarrito = (producto) => {
     const existe = carrito.find(item => item.id === producto.id);
@@ -56,48 +57,59 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar />
-
-      <Routes>
-        <Route
-          path="/"
-          element={<Home agregarAlCarrito={agregarAlCarrito} />}
+      <div
+        className={
+          darkMode
+            ? "bg-dark text-light min-vh-100"
+            : "bg-light text-dark min-vh-100"
+        }
+      >
+        <Navbar
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
         />
 
-        <Route
-          path="/productos"
-          element={<Products agregarAlCarrito={agregarAlCarrito} />}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home agregarAlCarrito={agregarAlCarrito} />}
+          />
 
-        <Route
-          path="/producto/:id"
-          element={<ProductDetail agregarAlCarrito={agregarAlCarrito} />}
-        />
+          <Route
+            path="/productos"
+            element={<Products agregarAlCarrito={agregarAlCarrito} />}
+          />
 
-        <Route
-          path="/carrito"
-          element={
-            <Cart
-              carrito={carrito}
-              eliminarDelCarrito={eliminarDelCarrito}
-              aumentarCantidad={aumentarCantidad}
-              disminuirCantidad={disminuirCantidad}
-            />
-          }
-        />
+          <Route
+            path="/producto/:id"
+            element={<ProductDetail agregarAlCarrito={agregarAlCarrito} />}
+          />
 
-        <Route
-          path="/checkout"
-          element={<Checkout carrito={carrito} />}
-        />
-          element={<Cart carrito={carrito}
-            eliminarDelCarrito={eliminarDelCarrito}
-            aumentarCantidad={aumentarCantidad}
-            disminuirCantidad={disminuirCantidad} />} />
-        <Route path="/checkout" element={<Checkout carrito={carrito} setCarrito={setCarrito} />} />
-      </Routes>
+          <Route
+            path="/carrito"
+            element={
+              <Cart
+                carrito={carrito}
+                eliminarDelCarrito={eliminarDelCarrito}
+                aumentarCantidad={aumentarCantidad}
+                disminuirCantidad={disminuirCantidad}
+              />
+            }
+          />
 
-      <Footer />
+          <Route
+            path="/checkout"
+            element={
+              <Checkout
+                carrito={carrito}
+                setCarrito={setCarrito}
+              />
+            }
+          />
+        </Routes>
+
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
