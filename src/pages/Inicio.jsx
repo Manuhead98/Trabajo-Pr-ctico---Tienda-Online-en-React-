@@ -1,12 +1,10 @@
 import { Container, Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
-import Navbar from "../components/Navbar";
 import Carousel from "../components/Carousel";
 import ProductCard from "../components/ProductCard";
 
 import productos from "../data/productos";
-function Inicio() {
+function Inicio({ agregarAlCarrito }) {
     return (
         <>
             <Carousel />
@@ -28,27 +26,19 @@ function Inicio() {
                 </Button>
 
             </Container>
-
             <Container>
-
                 <h2 className="mb-4">
                     Productos Destacados
                 </h2>
-
                 <Row>
-
                     {productos.slice(0, 4).map(producto => (
                         <Col md={3} key={producto.id}>
-                            <ProductCard producto={producto} />
+                            <ProductCard producto={producto} agregarAlCarrito={agregarAlCarrito} />
                         </Col>
                     ))}
-
                 </Row>
-
             </Container>
         </>
-
-
     );
 }
 

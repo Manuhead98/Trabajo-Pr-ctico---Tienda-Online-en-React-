@@ -35,7 +35,7 @@ const productos = [
         categoria: "Apple",
         precio: 1499999,
         stock: 7,
-        imagen: "./public/img/iphone15.jpg",
+        imagen: "./public/img/iphone15.jfif",
         descripcion: "Potencia y diseño en un solo dispositivo.",
         caracteristicas: ["128GB", "Dynamic Island", "USB-C"]
     },
@@ -45,7 +45,7 @@ const productos = [
         categoria: "Xiaomi",
         precio: 999999,
         stock: 12,
-        imagen: "./public/img/xiaomi15.jpg",
+        imagen: "./public/img/xiaomi15.jfif",
         descripcion: "Rendimiento de gama alta.",
         caracteristicas: ["256GB", "12GB RAM", "Leica Camera"]
     },
@@ -55,7 +55,7 @@ const productos = [
         categoria: "Xiaomi",
         precio: 549999,
         stock: 15,
-        imagen: "./public/img/redmi14.jpg",
+        imagen: "./public/img/redmi14.png",
         descripcion: "Ideal para uso diario.",
         caracteristicas: ["128GB", "8GB RAM", "5000mAh"]
     },
@@ -75,7 +75,7 @@ const productos = [
         categoria: "Motorola",
         precio: 499999,
         stock: 20,
-        imagen: "./public/img/g85.jpg",
+        imagen: "./public/img/g85.jfif",
         descripcion: "Gran autonomía y rendimiento.",
         caracteristicas: ["128GB", "8GB RAM", "5000mAh"]
     },
@@ -85,7 +85,7 @@ const productos = [
         categoria: "Google",
         precio: 1399999,
         stock: 4,
-        imagen: "./public/img/pixel9.jpg",
+        imagen: "./public/img/pixel9.jfif",
         descripcion: "La mejor experiencia Android.",
         caracteristicas: ["256GB", "Tensor G4", "Android puro"]
     },
