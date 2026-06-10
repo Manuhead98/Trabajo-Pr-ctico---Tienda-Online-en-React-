@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Navbar from "./components/Navbar";
 import Home from "./pages/Inicio";
 import Products from "./pages/Productos";
 import ProductDetail from "./pages/ProductoDetalle";
@@ -9,6 +10,8 @@ import Checkout from "./pages/CheckOut";
 function App() {
   return (
     <BrowserRouter>
+
+      <Navbar />
 
       <Routes>
 
