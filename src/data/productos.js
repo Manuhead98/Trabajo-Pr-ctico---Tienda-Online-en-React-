@@ -5,7 +5,7 @@ const productos = [
         categoria: "Samsung",
         precio: 1299999,
         stock: 10,
-        imagen: "./public/img/s25.jpg",
+        imagen: "/img/s25.jpg",
         descripcion: "Smartphone premium con pantalla AMOLED de 6.7 pulgadas.",
         caracteristicas: ["256GB", "12GB RAM", "5000mAh"]
     },
@@ -15,7 +15,7 @@ const productos = [
         categoria: "Samsung",
         precio: 699999,
         stock: 8,
-        imagen: "./public/img/a56.jpg",
+        imagen: "/img/a56.jpg",
         descripcion: "Excelente relación calidad-precio.",
         caracteristicas: ["128GB", "8GB RAM", "5000mAh"]
     },
@@ -25,7 +25,7 @@ const productos = [
         categoria: "Apple",
         precio: 1799999,
         stock: 5,
-        imagen: "./public/img/iphone16.jpg",
+        imagen: "/img/iphone16.jpg",
         descripcion: "La nueva generación de iPhone.",
         caracteristicas: ["256GB", "A18 Bionic", "Face ID"]
     },
@@ -35,7 +35,7 @@ const productos = [
         categoria: "Apple",
         precio: 1499999,
         stock: 7,
-        imagen: "./public/img/iphone15.jfif",
+        imagen: "/img/iphone15.jfif",
         descripcion: "Potencia y diseño en un solo dispositivo.",
         caracteristicas: ["128GB", "Dynamic Island", "USB-C"]
     },
@@ -45,7 +45,7 @@ const productos = [
         categoria: "Xiaomi",
         precio: 999999,
         stock: 12,
-        imagen: "./public/img/xiaomi15.jfif",
+        imagen: "/img/xiaomi15.jfif",
         descripcion: "Rendimiento de gama alta.",
         caracteristicas: ["256GB", "12GB RAM", "Leica Camera"]
     },
@@ -55,7 +55,7 @@ const productos = [
         categoria: "Xiaomi",
         precio: 549999,
         stock: 15,
-        imagen: "./public/img/redmi14.png",
+        imagen: "/img/redmi14.png",
         descripcion: "Ideal para uso diario.",
         caracteristicas: ["128GB", "8GB RAM", "5000mAh"]
     },
@@ -65,7 +65,7 @@ const productos = [
         categoria: "Motorola",
         precio: 899999,
         stock: 6,
-        imagen: "./public/img/edge60.jpg",
+        imagen: "/img/edge60.jpg",
         descripcion: "Diseño moderno y excelente cámara.",
         caracteristicas: ["256GB", "12GB RAM", "OLED"]
     },
@@ -75,7 +75,7 @@ const productos = [
         categoria: "Motorola",
         precio: 499999,
         stock: 20,
-        imagen: "./public/img/g85.jfif",
+        imagen: "/img/g85.jfif",
         descripcion: "Gran autonomía y rendimiento.",
         caracteristicas: ["128GB", "8GB RAM", "5000mAh"]
     },
@@ -85,7 +85,7 @@ const productos = [
         categoria: "Google",
         precio: 1399999,
         stock: 4,
-        imagen: "./public/img/pixel9.jfif",
+        imagen: "/img/pixel9.jfif",
         descripcion: "La mejor experiencia Android.",
         caracteristicas: ["256GB", "Tensor G4", "Android puro"]
     },
@@ -105,7 +105,7 @@ const productos = [
         categoria: "Samsung",
         precio: 1899999,
         stock: 2,
-        imagen: "./public/img/zflip7.jpg",
+        imagen: "/img/zflip7.jpg",
         descripcion: "Celular plegable compacto.",
         caracteristicas: ["256GB", "AMOLED", "Flex Mode"]
     },
@@ -115,7 +115,7 @@ const productos = [
         categoria: "Motorola",
         precio: 1599999,
         stock: 0,
-        imagen: "./public/img/razr60.jpg",
+        imagen: "/img/razr60.jpg",
         descripcion: "Diseño plegable premium.",
         caracteristicas: ["256GB", "OLED", "Sin stock"]
     }
