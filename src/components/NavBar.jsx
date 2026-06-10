@@ -1,7 +1,7 @@
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function NavBar() {
+function NavBar({ darkMode, setDarkMode }) {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
 
@@ -27,7 +27,12 @@ function NavBar() {
                         >
                             Productos
                         </Nav.Link>
-
+                        <Nav.Link
+                        as={Link}
+                        to="/nosotros"
+                        >
+                        Nosotros
+                        </Nav.Link>
                         <Nav.Link
                             as={Link}
                             to="/carrito"
@@ -43,6 +48,13 @@ function NavBar() {
                         </Nav.Link>
 
                     </Nav>
+
+                    <Button
+                        variant={darkMode ? "light" : "outline-light"}
+                        onClick={() => setDarkMode(!darkMode)}
+                    >
+                        {darkMode ? "☀️" : "🌙"}
+                    </Button>
 
                 </Navbar.Collapse>
 

@@ -5,9 +5,14 @@ import productos from '../data/productos';
 
 function ProductoDetalle({ agregarAlCarrito }) {
 
+<<<<<<< HEAD
 
     const { id } = useParams();
 
+=======
+    const { id } = useParams();
+
+>>>>>>> e11a9cd70cc405cd2935990e3b3d6fefee73c487
     const producto = productos.find(
         p => p.id === Number(id)
     );
@@ -97,7 +102,11 @@ function ProductoDetalle({ agregarAlCarrito }) {
         </Container>
     );
 
+<<<<<<< HEAD
 
 }
 
 export default ProductoDetalle;
+=======
+export default ProductoDetalle;
+>>>>>>> e11a9cd70cc405cd2935990e3b3d6fefee73c487

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/NavBar";
@@ -8,9 +8,16 @@ import ProductDetail from "./pages/ProductoDetalle";
 import Cart from "./pages/Carrito";
 import Checkout from "./pages/CheckOut";
 import Footer from "./components/Footer";
+import Nosotros from "./pages/Nosotros";
 
 function App() {
-  const [carrito, setCarrito] = useState([]);
+  const [carrito, setCarrito] = useState(() => {
+  const carritoGuardado = localStorage.getItem("carrito");
+  return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+  });
+  useEffect(() => {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  }, [carrito]);
   const [darkMode, setDarkMode] = useState(false);
 
   const agregarAlCarrito = (producto) => {
@@ -84,7 +91,10 @@ function App() {
             path="/producto/:id"
             element={<ProductDetail agregarAlCarrito={agregarAlCarrito} />}
           />
-
+          <Route
+            path="/nosotros"
+            element={<Nosotros />}
+          />
           <Route
             path="/carrito"
             element={
