@@ -4,15 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import productos from '../data/productos';
 
 function ProductoDetalle({ agregarAlCarrito }) {
-
-<<<<<<< HEAD
-
     const { id } = useParams();
-
-=======
-    const { id } = useParams();
-
->>>>>>> e11a9cd70cc405cd2935990e3b3d6fefee73c487
     const producto = productos.find(
         p => p.id === Number(id)
     );
@@ -54,13 +46,13 @@ function ProductoDetalle({ agregarAlCarrito }) {
 
                     <p>
                         <strong>Stock:</strong>{" "}
-                        {producto.stock > 0 ? (
+                        {stockDisponible > 0 ? (
                             <Badge bg="success">
-                                Disponible ({producto.stock})
+                                Stock: {stockDisponible}
                             </Badge>
                         ) : (
                             <Badge bg="danger">
-                                Sin stock
+                                Sin Stock
                             </Badge>
                         )}
                     </p>
@@ -102,11 +94,7 @@ function ProductoDetalle({ agregarAlCarrito }) {
         </Container>
     );
 
-<<<<<<< HEAD
 
 }
 
 export default ProductoDetalle;
-=======
-export default ProductoDetalle;
->>>>>>> e11a9cd70cc405cd2935990e3b3d6fefee73c487

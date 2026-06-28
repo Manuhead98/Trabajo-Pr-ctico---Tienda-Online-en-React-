@@ -2,21 +2,21 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/NavBar";
-import Home from "./pages/Inicio";
-import Products from "./pages/Productos";
-import ProductDetail from "./pages/ProductoDetalle";
-import Cart from "./pages/Carrito";
-import Checkout from "./pages/CheckOut";
+import Inicio from "./pages/Inicio";
+import Productos from "./pages/Productos";
+import ProductoDetalle from "./pages/ProductoDetalle";
+import Carrito from "./pages/Carrito";
+import CheckOut from "./pages/CheckOut";
 import Footer from "./components/Footer";
 import Nosotros from "./pages/Nosotros";
 
 function App() {
   const [carrito, setCarrito] = useState(() => {
-  const carritoGuardado = localStorage.getItem("carrito");
-  return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+    const carritoGuardado = localStorage.getItem("carrito");
+    return carritoGuardado ? JSON.parse(carritoGuardado) : [];
   });
   useEffect(() => {
-  localStorage.setItem("carrito", JSON.stringify(carrito));
+    localStorage.setItem("carrito", JSON.stringify(carrito));
   }, [carrito]);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -24,6 +24,10 @@ function App() {
     const existe = carrito.find(item => item.id === producto.id);
 
     if (existe) {
+      if (existe.cantidad >= producto.stock) {
+        alert("No hay más stock disponible");
+        return;
+      }
       setCarrito(
         carrito.map(item =>
           item.id === producto.id
@@ -32,7 +36,14 @@ function App() {
         )
       );
     } else {
-      setCarrito([...carrito, { ...producto, cantidad: 1 }]);
+      if (producto.stock <= 0) {
+        alert("Producto sin stock");
+        return;
+      }
+      setCarrito([
+        ...carrito,
+        { ...producto, cantidad: 1 }
+      ]);
     }
   };
 
@@ -42,11 +53,19 @@ function App() {
 
   const aumentarCantidad = (id) => {
     setCarrito(
-      carrito.map(item =>
-        item.id === id
-          ? { ...item, cantidad: item.cantidad + 1 }
-          : item
-      )
+      carrito.map(item => {
+        if (item.id === id) {
+
+          if (item.cantidad >= item.stock) {
+            return item;
+          }
+          return {
+            ...item,
+            cantidad: item.cantidad + 1
+          };
+        }
+        return item;
+      })
     );
   };
 
@@ -77,28 +96,45 @@ function App() {
         />
 
         <Routes>
+
           <Route
             path="/"
-            element={<Home agregarAlCarrito={agregarAlCarrito} />}
+            element={
+              <Inicio
+                agregarAlCarrito={agregarAlCarrito}
+                carrito={carrito}
+              />
+            }
           />
 
           <Route
             path="/productos"
-            element={<Products agregarAlCarrito={agregarAlCarrito} />}
+            element={
+              <Productos
+                agregarAlCarrito={agregarAlCarrito}
+                carrito={carrito}
+              />
+            }
           />
 
           <Route
             path="/producto/:id"
-            element={<ProductDetail agregarAlCarrito={agregarAlCarrito} />}
+            element={
+              <ProductoDetalle
+                agregarAlCarrito={agregarAlCarrito}
+              />
+            }
           />
+
           <Route
             path="/nosotros"
             element={<Nosotros />}
           />
+
           <Route
             path="/carrito"
             element={
-              <Cart
+              <Carrito
                 carrito={carrito}
                 eliminarDelCarrito={eliminarDelCarrito}
                 aumentarCantidad={aumentarCantidad}
@@ -110,12 +146,13 @@ function App() {
           <Route
             path="/checkout"
             element={
-              <Checkout
+              <CheckOut
                 carrito={carrito}
                 setCarrito={setCarrito}
               />
             }
           />
+
         </Routes>
 
         <Footer />

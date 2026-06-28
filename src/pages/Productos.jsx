@@ -5,7 +5,7 @@ import ProductCard from '../components/ProductCard';
 
 // componente para mostrar el catálogo de productos con filtros de búsqueda y categoría
 //recibe la función agregarAlCarrito como prop para poder agregar productos al carrito desde la card
-function Productos({ agregarAlCarrito }) {
+function Productos({ agregarAlCarrito, carrito }) {
     //estados para filtros
     const [busqueda, setBusqueda] = useState('');
     const [categoria, setCategoria] = useState('');
@@ -67,7 +67,11 @@ function Productos({ agregarAlCarrito }) {
             <Row>
                 {productosFiltrados.map(producto => (
                     <Col key={producto.id} lg={3} md={4} sm={6} className="mb-4">
-                        <ProductCard producto={producto} agregarAlCarrito={agregarAlCarrito} />
+                        <ProductCard
+                            producto={producto}
+                            agregarAlCarrito={agregarAlCarrito}
+                            carrito={carrito}
+                        />
                     </Col>))
                 }
             </Row>

@@ -1,7 +1,11 @@
 import { Card, Button, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function ProductCard({ producto, agregarAlCarrito }) {
+function ProductCard({ producto, agregarAlCarrito, carrito }) {
+
+    const itemEnCarrito = carrito.find(item => item.id === producto.id);
+    const stockDisponible = producto.stock - (itemEnCarrito?.cantidad || 0);
+
     return (
         <Card className="h-100 shadow-sm">
             <Card.Img
@@ -15,11 +19,18 @@ function ProductCard({ producto, agregarAlCarrito }) {
                 </Badge>
                 <Card.Text>${producto.precio.toLocaleString()}</Card.Text>
                 <Card.Text>{producto.descripcion}</Card.Text>
-                {producto.stock > 0 ? (<Badge bg="success"> Stock: {producto.stock}</Badge>) : (<Badge bg="danger"> Sin Stock </Badge>)}
+                {stockDisponible > 0 ? (<Badge bg="success"> Stock: {stockDisponible}</Badge>) : (<Badge bg="danger"> Sin Stock </Badge>)}
 
                 <div className="mt-3 d-flex gap-2">
                     <Button as={Link} to={`/producto/${producto.id}`} variant="primary">Ver Detalle</Button>
-                    <Button variant="success" disabled={producto.stock === 0} onClick={() => agregarAlCarrito(producto)}>Agregar</Button>
+                    <Button
+                        onClick={() => agregarAlCarrito(producto)}
+                        disabled={stockDisponible <= 0}
+                    >
+                        {stockDisponible <= 0
+                            ? "Agotado"
+                            : "Agregar al carrito"}
+                    </Button>
                 </div>
             </Card.Body>
         </Card>
